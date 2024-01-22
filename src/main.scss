@@ -1,10 +1,40 @@
-// General rules
+// Variables
+$linkColor: #2c3e50;
 
+// - General rules -
+// Fonts
+@font-face {
+    font-family: "Avenir";
+    src: local("Avenir-Regular.ttf"), 
+    url("./assets/fonts/Avenir-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Avenir";
+    src: local("Avenir-Heavy.ttf"),
+    url("./assets/fonts/Avenir-Heavy.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+// Others
 * {
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: "Avenir";
+}
+
 ul {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $linkColor;
 }
