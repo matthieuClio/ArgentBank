@@ -1,11 +1,9 @@
 // Variable
-$headerBackground: #FFFFFF;
 $headerSignInColor: #2c3e50;
 
 // Header component
 .main-navigation {
     border: 2px solid purple;
-    background-color: $headerBackground;
 
     &__ul {
         border: 2px solid blue;

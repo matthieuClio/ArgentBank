@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 // Layout components
 import Header from './layout/Header'
+import Footer from './layout/Footer'
 
 // Style - Fonts
 import 'normalize.css'
@@ -16,7 +17,10 @@ const router = createBrowserRouter([
   // Main route
   {
     path: '/',
-    element: <Header />
+    element: <>
+      <Header />
+      <Footer />
+    </>
   }
 ])
 

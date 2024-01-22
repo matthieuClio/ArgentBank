@@ -1,0 +1,9 @@
+// Variable
+$footerBorder: #ccc;
+
+// Footer layout component
+.footer {
+    border-top: 2px solid $footerBorder;
+    padding: 2rem 0 1.5rem;
+    text-align: center;
+}
