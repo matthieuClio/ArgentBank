@@ -1,0 +1,16 @@
+// Variable
+$headerBackground: #FFFFFF;
+
+// Header component
+.main-navigation {
+    border: 2px solid purple;
+    background-color: $headerBackground;
+
+    &__ul {
+        border: 2px solid blue;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 20px;
+    }
+}
