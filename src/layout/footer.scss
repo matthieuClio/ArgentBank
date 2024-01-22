@@ -1,9 +1,11 @@
 // Variable
 $footerBorder: #ccc;
+$footerColor: #2c3e50;
 
 // Footer layout component
 .footer {
     border-top: 2px solid $footerBorder;
     padding: 2rem 0 1.5rem;
     text-align: center;
+    color: $footerColor;
 }
