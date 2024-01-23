@@ -10,7 +10,8 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 
 // Page components
-import Home from './page/Home'
+import Home from './page/Home';
+import Connection from './page/Connection';
 
 // Style - Fonts
 import 'normalize.css';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: 'sign-in',
+        element: <Connection />
       }
     ]
   }

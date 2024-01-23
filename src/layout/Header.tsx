@@ -1,5 +1,5 @@
 // React router
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 // Style
 import './header.scss';
@@ -15,10 +15,10 @@ export default function Header () {
                         </li>
 
                         <li className="main-navigation__ul__sign-in">
-                            <a href="#">
+                            <Link to="sign-in">
                                 <span className="fa fa-user-circle main-navigation__ul__sign-in__icon"></span>
                                 <span>Sign In</span>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
