@@ -1,0 +1,27 @@
+// Variable
+$featureColor: #2c3e50;
+
+// Features component
+.features {
+    border: 2px solid purple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 40px 20px;
+    max-width: 340px;
+    text-align: center;
+    color: $featureColor;
+
+    &__image {
+        margin-bottom: 20px;
+        padding: 1rem;
+        width: 100px;
+        border: 10px solid #00bc77;
+        border-radius: 50%;
+    }
+
+    &__main-text {
+        margin-bottom: 16px;
+        font-size: 21px;
+    }
+}
