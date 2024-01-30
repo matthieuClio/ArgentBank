@@ -1,10 +1,11 @@
 // Style
-import './connection.scss'
+import './connection.scss';
 
 export default function Connection () {
     return (
         <main className="connection">
-            <form className="connection__form">
+            {/* Faire un onsubmit="handleSubmit" via JS, pas de méthode à mettre, enlever method, action */}
+            <form method="get" action="user" className="connection__form">
                 {/* Icon */}
                 <span className="fa fa-user-circle connection__form__icon"></span>
 
@@ -23,7 +24,7 @@ export default function Connection () {
                 <label htmlFor="password" className="connection-label">
                     Password
                 </label>
-                <input type="text" id="password" className="connection-input-text" />
+                <input type="password" id="password" className="connection-input-text" />
 
                 {/* Checkbox */}
                 <div className="connection__form__input-container">
@@ -34,7 +35,7 @@ export default function Connection () {
                 </div>
 
                 <button type="submit" className="connection__form__submit-button">
-                    <span>Sign In</span>
+                    <span className="connection__form__submit-button__text">Sign In</span>
                 </button>
             </form>
         </main>

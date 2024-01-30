@@ -1,5 +1,11 @@
+// React
+import { useEffect } from 'react';
+
 // Componant
 import Features from '../componant/Features';
+
+// Scripts
+import getData from '../script/getData'
 
 // Style
 import './home.scss';
@@ -29,11 +35,22 @@ const allFeatures = {
                         to make sure your data and money is always safe.
                         `
     }
-}
+};
 
 export default function Home () {
+
+    // Hook - UseEffect
+    // useEffect(() => {
+    //     async function fetchUserData () {
+    //         // Make an API call for log the user
+    //         const apiDataToken = await getData();
+    //         console.log(apiDataToken)
+    //     }
+    //     fetchUserData();
+    // }, []);
+
     return (
-        <>
+        <main>
             <figure className="hero">
                 <img src="./images/bank-tree.jpeg" alt="Une plante dans un verre rempli de pièce" className="hero__image" />
 
@@ -82,6 +99,6 @@ export default function Home () {
                     secondaryText={allFeatures.security.textSecondary} 
                 />
             </div>
-        </>
-    )
+        </main>
+    );
 }

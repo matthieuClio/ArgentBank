@@ -11,11 +11,13 @@ export default function Header () {
                 <nav className="main-navigation">
                     <ul className="main-navigation__ul">
                         <li>
-                            <img src="./images/argentBankLogo.png" alt="logo ARGENTBANK" className="main-navigation__ul__logo"/>
+                            <Link to="/">
+                                <img src="./images/argentBankLogo.png" alt="logo ARGENTBANK" className="main-navigation__ul__logo"/>
+                            </Link>
                         </li>
 
                         <li className="main-navigation__ul__sign-in">
-                            <Link to="sign-in">
+                            <Link to="login">
                                 <span className="fa fa-user-circle main-navigation__ul__sign-in__icon"></span>
                                 <span>Sign In</span>
                             </Link>
@@ -26,5 +28,5 @@ export default function Header () {
 
             <Outlet />
         </>
-    )
+    );
 }

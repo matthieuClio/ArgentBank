@@ -12,6 +12,7 @@ import Footer from './layout/Footer';
 // Page components
 import Home from './page/Home';
 import Connection from './page/Connection';
+import User from './page/User';
 
 // Style - Fonts
 import 'normalize.css';
@@ -31,8 +32,12 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: 'sign-in',
+        path: 'login',
         element: <Connection />
+      },
+      {
+        path: 'user',
+        element: <User />
       }
     ]
   }

@@ -41,12 +41,14 @@ $connectionFormSubmitButtonColor: #fff;
         }
 
         &__input-username {
+            margin: auto;
             margin-bottom: 20px;
         }
 
         &__input-container {
             display: flex;
             margin-top: 20px;
+            width: 100%;
             border: 2px solid red;
 
             &__input-checkbox {
@@ -55,6 +57,7 @@ $connectionFormSubmitButtonColor: #fff;
         }
 
         &__submit-button {
+            display: block;
             margin-top: 20px;
             width: 100%;
             padding: 9px;
@@ -64,6 +67,10 @@ $connectionFormSubmitButtonColor: #fff;
             color: $connectionFormSubmitButtonColor;
             border: none;
             cursor: pointer;
+
+            &__text {
+                text-decoration: underline;
+            }
         }
     }
 }
