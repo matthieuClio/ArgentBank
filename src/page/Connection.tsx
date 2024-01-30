@@ -1,11 +1,55 @@
+// React router
+import { useNavigate } from 'react-router-dom';
+
 // Style
 import './connection.scss';
 
+// Scripts
+import getData from '../script/getData';
+
 export default function Connection () {
+
+    // For make redirection
+    const navigate = useNavigate()
+
+    // HandleSubmit function
+    function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
+        // Cancel the submition
+        event.preventDefault();
+    
+        // Get data form
+        const form = new FormData(event.target as HTMLFormElement);
+        const usernameUser = form.get("username")
+        const passwordUser = form.get("password")
+        // console.log(form.get("username"));
+        // console.log(form.get("password"));
+
+        // Get token
+        async function fetchUserData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
+            // Make an API call for connect the user
+            const apiDataToken = await getData(usernameUser, passwordUser);
+            console.log(apiDataToken);
+
+            if (apiDataToken.status === 200) {
+                navigate('/user')
+            }
+        }
+        fetchUserData(usernameUser, passwordUser);
+    }
+
+    // Hook - UseEffect
+    // useEffect(() => {
+    //     async function fetchUserData () {
+    //         // Make an API call for log the user
+    //         const apiDataToken = await getData();
+    //         console.log(apiDataToken);
+    //     }
+    //     fetchUserData();
+    // }, []);
+
     return (
         <main className="connection">
-            {/* Faire un onsubmit="handleSubmit" via JS, pas de méthode à mettre, enlever method, action */}
-            <form method="get" action="user" className="connection__form">
+            <form onSubmit={handleSubmit} className="connection__form">
                 {/* Icon */}
                 <span className="fa fa-user-circle connection__form__icon"></span>
 
@@ -18,13 +62,13 @@ export default function Connection () {
                 <label htmlFor="username" className="connection-label">
                     Username
                 </label>
-                <input type="text" id="username" className="connection-input-text connection__form__input-username" />
+                <input type="text" name="username" id="username" required className="connection-input-text connection__form__input-username" />
 
                 {/* Password */}
                 <label htmlFor="password" className="connection-label">
                     Password
                 </label>
-                <input type="password" id="password" className="connection-input-text" />
+                <input type="password" name="password" id="password" required className="connection-input-text" />
 
                 {/* Checkbox */}
                 <div className="connection__form__input-container">
@@ -34,8 +78,11 @@ export default function Connection () {
                     </label>
                 </div>
 
+                {/* Submit button */}
                 <button type="submit" className="connection__form__submit-button">
-                    <span className="connection__form__submit-button__text">Sign In</span>
+                    <span className="connection__form__submit-button__text">
+                        Sign In
+                    </span>
                 </button>
             </form>
         </main>

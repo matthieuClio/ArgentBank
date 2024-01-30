@@ -1,11 +1,5 @@
-// React
-import { useEffect } from 'react';
-
 // Componant
 import Features from '../componant/Features';
-
-// Scripts
-import getData from '../script/getData'
 
 // Style
 import './home.scss';
@@ -38,16 +32,6 @@ const allFeatures = {
 };
 
 export default function Home () {
-
-    // Hook - UseEffect
-    // useEffect(() => {
-    //     async function fetchUserData () {
-    //         // Make an API call for log the user
-    //         const apiDataToken = await getData();
-    //         console.log(apiDataToken)
-    //     }
-    //     fetchUserData();
-    // }, []);
 
     return (
         <main>

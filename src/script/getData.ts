@@ -1,10 +1,15 @@
-export default async function getData () {
+export default async function getData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
 
     // Login informations
     const loginInfo = {
-        "email": "tony@stark.com",
-        "password": "password123"
+        "email": usernameUser,
+        "password": passwordUser
     };
+
+    // const loginInfo = {
+    //     "email": "tony@stark.com",
+    //     "password": "password123"
+    // };
 
     // User connection (Api request)
     const responseUser = await fetch('http://localhost:3001/api/v1/user/login', {
@@ -19,5 +24,5 @@ export default async function getData () {
 
     // Token data API returned
     const apiUser = await responseUser.json();
-    return apiUser
+    return apiUser;
 }
