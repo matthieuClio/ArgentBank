@@ -40,14 +40,15 @@ export default async function getData (usernameUser: FormDataEntryValue | null, 
             }
         });
 
+        // Stock user informations
         apiGetUserInfo = await responseUserInfo.json();
     }
 
+    // Create an object contain API data
     const apiData = {
         token: apiIdentification,
         userInformations: apiGetUserInfo
     }
 
     return apiData;
-    // return apiIdentification;
 }

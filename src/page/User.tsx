@@ -1,5 +1,11 @@
+// React
+import { useEffect } from 'react';
+
+// Router
+import { useNavigate } from 'react-router-dom';
+
 // Redux
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // Component
 import Transaction from '../componant/Transaction';
@@ -9,15 +15,26 @@ import './user.scss';
 
 export default function User () {
 
-    // Store access
-    // const userInfo = useSelector((state: { user: object }) => state.user);
-    // console.log(userInfo)
+    // For make a redirection
+    const navigate = useNavigate()
 
-    return (
+    // Store access
+    const userInfo = useSelector((state: {
+        user: { connected: boolean, userFirstname: string, userName: string } 
+    }) => state.user);
+
+    // Make a redirection for a user who are not connected
+    useEffect(() => {
+        if (!userInfo.connected) {
+            navigate('login');
+        }
+    })
+
+    return userInfo.connected && (
         <main className="user">
             <h1 className="user__main-title">
                 Welcome back
-                <span className="user__main-title__text">Tony Jarvis!</span>
+                <span className="user__main-title__text">{userInfo.userFirstname} {userInfo.userName}</span>
             </h1>
 
             <button className="user__button">

@@ -52,8 +52,13 @@ export default function Connection () {
                     break;
 
                 // Display error message
-                case 400: console.log('Error login');
-                break;
+                case 400: 
+                    console.log('Error login');
+                    break;
+
+                default:
+                    console.log('Not status 200 or 400');
+                    break;
             }
         }
         fetchUserData(usernameUser, passwordUser);
@@ -74,13 +79,13 @@ export default function Connection () {
                 <label htmlFor="username" className="connection-label">
                     Username
                 </label>
-                <input type="text" name="username" id="username" required className="connection-input-text connection__form__input-username" />
+                <input type="text" name="username" id="username" placeholder="tony@stark.com" defaultValue="tony@stark.com" required className="connection-input-text connection__form__input-username" />
 
                 {/* Password */}
                 <label htmlFor="password" className="connection-label">
                     Password
                 </label>
-                <input type="password" name="password" id="password" required className="connection-input-text" />
+                <input type="password" name="password" id="password" placeholder="password123" defaultValue="password123" required className="connection-input-text" />
 
                 {/* Checkbox */}
                 <div className="connection__form__input-container">
