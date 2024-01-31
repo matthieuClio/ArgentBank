@@ -10,7 +10,7 @@ import getData from '../script/getData';
 export default function Connection () {
 
     // For make redirection
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     // HandleSubmit function
     function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
@@ -19,10 +19,8 @@ export default function Connection () {
     
         // Get data form
         const form = new FormData(event.target as HTMLFormElement);
-        const usernameUser = form.get("username")
-        const passwordUser = form.get("password")
-        // console.log(form.get("username"));
-        // console.log(form.get("password"));
+        const usernameUser = form.get("username");
+        const passwordUser = form.get("password");
 
         // Get token
         async function fetchUserData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
@@ -30,22 +28,18 @@ export default function Connection () {
             const apiDataToken = await getData(usernameUser, passwordUser);
             console.log(apiDataToken);
 
-            if (apiDataToken.status === 200) {
-                navigate('/user')
+            // Check the response status
+            switch (apiDataToken.status) {
+                // Redirect user
+                case 200: navigate('/user');
+                break;
+                // Display error message
+                case 400: console.log('Error login');
+                break;
             }
         }
         fetchUserData(usernameUser, passwordUser);
     }
-
-    // Hook - UseEffect
-    // useEffect(() => {
-    //     async function fetchUserData () {
-    //         // Make an API call for log the user
-    //         const apiDataToken = await getData();
-    //         console.log(apiDataToken);
-    //     }
-    //     fetchUserData();
-    // }, []);
 
     return (
         <main className="connection">
