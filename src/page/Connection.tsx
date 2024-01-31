@@ -1,13 +1,25 @@
 // React router
 import { useNavigate } from 'react-router-dom';
 
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+
 // Style
 import './connection.scss';
 
 // Scripts
-import getData from '../script/getData';
+import getData from '../scripts/getData';
+// Scripts - Redux Toolkit
+import { update } from '../scripts/reduxToolkit/slice';
 
 export default function Connection () {
+
+    // For use reducer
+    const userDispatch = useDispatch()
+
+    // Get user store information
+    const userStore = useSelector((state: { user: object }) => state.user);
+    console.log(userStore);
 
     // For make redirection
     const navigate = useNavigate();
@@ -22,17 +34,23 @@ export default function Connection () {
         const usernameUser = form.get("username");
         const passwordUser = form.get("password");
 
-        // Get token
+        // Make API calls - get token
         async function fetchUserData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
             // Make an API call for connect the user
-            const apiDataToken = await getData(usernameUser, passwordUser);
-            console.log(apiDataToken);
+            const apiData = await getData(usernameUser, passwordUser);
+            console.log(apiData);
 
             // Check the response status
-            switch (apiDataToken.status) {
+            switch (apiData.token.status) {
                 // Redirect user
-                case 200: navigate('/user');
-                break;
+                case 200:
+                    // Update the store in giving API data
+                    userDispatch(update(apiData));
+
+                    // Redirect the user
+                    navigate('/user');
+                    break;
+
                 // Display error message
                 case 400: console.log('Error login');
                 break;

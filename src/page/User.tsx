@@ -1,3 +1,6 @@
+// Redux
+// import { useSelector } from 'react-redux';
+
 // Component
 import Transaction from '../componant/Transaction';
 
@@ -5,6 +8,11 @@ import Transaction from '../componant/Transaction';
 import './user.scss';
 
 export default function User () {
+
+    // Store access
+    // const userInfo = useSelector((state: { user: object }) => state.user);
+    // console.log(userInfo)
+
     return (
         <main className="user">
             <h1 className="user__main-title">
