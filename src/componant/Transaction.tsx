@@ -5,7 +5,7 @@ export default function Transaction(props: {
     informationsText: { operationText: string, amountText: string, balanceText: string } 
 }) {
 
-    const { informationsText} = props
+    const { informationsText } = props;
 
     return (
         <section className="operation">

@@ -20,12 +20,17 @@ export const sliceUser = createSlice({
             state.userName = action.payload.userInformations.body.lastName
             state.email = action.payload.userInformations.body.email
             state.connected = !state.connected
+        },
+
+        updateInfoUser: (state, action) => {
+            state.userFirstname = action.payload.body.firstName;
+            state.userName = action.payload.body.lastName;
         }
     }
 });
 
 // Actions exported for dispatch using
-export const { update } = sliceUser.actions;
+export const { update, updateInfoUser } = sliceUser.actions;
 
 // Reducer exported
 export default sliceUser.reducer;

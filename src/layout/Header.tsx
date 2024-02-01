@@ -8,8 +8,9 @@ import { useSelector } from 'react-redux';
 import './header.scss';
 
 export default function Header () {
-    const userInfo = useSelector((state: { user: { userFirstname: string, connected: boolean } }) => state.user);
-    console.log(userInfo.connected);
+    const userInfo = useSelector((state: {
+        user: { userFirstname: string, connected: boolean } 
+    }) => state.user);
 
     return (
         <>
@@ -22,9 +23,8 @@ export default function Header () {
                             </Link>
                         </li>
 
-                        <li className="main-navigation__ul__sign-in">
-                            {/* Définir en tant que composant  -> Pas besoin juste condition ternaire*/}
-                            
+                        <li className="main-navigation__ul__sign-in">    
+                            {/* Display when the user is connected */}
                             {userInfo.connected && 
                                 (<>
                                     <Link to="user">
@@ -42,7 +42,8 @@ export default function Header () {
                                     </Link>
                                 </>)
                             }
-                            
+
+                            {/* Display when the user is not connected */}
                             {!userInfo.connected &&
                                 (<Link to="login">
                                     <div className="main-navigation__ul__sign-in__container">
@@ -51,12 +52,12 @@ export default function Header () {
                                     </div>
                                 </Link>)
                             }
-                            
                         </li>
                     </ul>
                 </nav>
             </header>
-
+            
+            {/* Display children of the main route */}
             <Outlet />
         </>
     );

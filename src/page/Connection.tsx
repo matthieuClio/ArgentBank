@@ -29,12 +29,12 @@ export default function Connection () {
         // Cancel the submition
         event.preventDefault();
     
-        // Get data form
+        // Get form data
         const form = new FormData(event.target as HTMLFormElement);
         const usernameUser = form.get("username");
         const passwordUser = form.get("password");
 
-      
+        // Call async function
         fetchUserData(usernameUser, passwordUser);
     }
 
