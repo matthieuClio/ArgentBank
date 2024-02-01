@@ -1,0 +1,53 @@
+// Variables
+$operationBackground: #FFFFFF;
+$operationButtonBorder: #00bc77;
+$operationButtonBackground: #00bc77;
+$operationButtonColor: #FFFFFF;
+$operationPriceColor: #2c3e50;
+
+.operation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    margin-bottom: 30px;
+    width: 80%;
+    box-sizing: border-box;
+    background-color: $operationBackground;
+    border: 1px solid black;
+
+    &__informations {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+
+        &__h2 {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        &__price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: $operationPriceColor;
+        }
+    }
+
+    &__transaction {
+        display: inline;
+        margin: 1rem 10px 0 0;
+
+        &__button {
+            display: block;
+            width: 100%;
+            padding: 8px 25px 8px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-color: $operationButtonBorder;
+            background-color: $operationButtonBackground;
+            color: $operationButtonColor;
+        }
+    }
+}

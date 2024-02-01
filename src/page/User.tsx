@@ -1,10 +1,10 @@
 // React
 import { useEffect } from 'react';
 
-// Router
+// React router
 import { useNavigate } from 'react-router-dom';
 
-// Redux
+// React redux
 import { useSelector } from 'react-redux';
 
 // Component
@@ -13,10 +13,30 @@ import Transaction from '../componant/Transaction';
 // Style
 import './user.scss';
 
+// For Transaction component
+const transactionInfo = {
+
+    checking: {
+        operationText: 'Argent Bank Checking (x8349)',
+        amountText: '$2,082.79',
+        balanceText: 'Available Balance'
+    },
+    saving: {
+        operationText: 'Argent Bank Savings (x6712)',
+        amountText: '$10,928.42',
+        balanceText: 'Available Balance'
+    },
+    creditCard: {
+        operationText: 'Argent Bank Credit Card (x8349)',
+        amountText: '$184.30',
+        balanceText: 'Current Balance'
+    }
+}
+
 export default function User () {
 
     // For make a redirection
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     // Store access
     const userInfo = useSelector((state: {
@@ -42,7 +62,15 @@ export default function User () {
             </button>
 
             {/* Transaction component */}
-            <Transaction />
+            <Transaction 
+                informationsText={transactionInfo.checking}
+            />
+            <Transaction 
+                informationsText={transactionInfo.saving}
+            />
+            <Transaction 
+                informationsText={transactionInfo.creditCard}
+            />
         </main>
     )
 }

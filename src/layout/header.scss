@@ -23,13 +23,18 @@ $headerSignInColor: #2c3e50;
             color: $headerSignInColor;
             font-weight: bold;
             
-            &:hover {
-                text-decoration: underline;
-            }
+            &__container {
+                display: inline-block;
+                margin-left: 10px;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
 
-            &__icon {
-                margin-right: 5px;
-                font-size: 18px;
+                &__icon {
+                    padding-right: 5px;
+                    font-size: 18px;
+                }
             }
         }
     }

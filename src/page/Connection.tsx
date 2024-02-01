@@ -1,7 +1,7 @@
 // React router
 import { useNavigate } from 'react-router-dom';
 
-// Redux
+// React redux
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
@@ -34,34 +34,36 @@ export default function Connection () {
         const usernameUser = form.get("username");
         const passwordUser = form.get("password");
 
-        // Make API calls - get token
-        async function fetchUserData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
-            // Make an API call for connect the user
-            const apiData = await getData(usernameUser, passwordUser);
-            console.log(apiData);
-
-            // Check the response status
-            switch (apiData.token.status) {
-                // Redirect user
-                case 200:
-                    // Update the store in giving API data
-                    userDispatch(update(apiData));
-
-                    // Redirect the user
-                    navigate('/user');
-                    break;
-
-                // Display error message
-                case 400: 
-                    console.log('Error login');
-                    break;
-
-                default:
-                    console.log('Not status 200 or 400');
-                    break;
-            }
-        }
+      
         fetchUserData(usernameUser, passwordUser);
+    }
+
+    // Make API calls - get token
+    async function fetchUserData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
+        // Make an API call for connect the user
+        const apiData = await getData(usernameUser, passwordUser);
+        console.log(apiData);
+
+        // Check the response status
+        switch (apiData.token.status) {
+            // Redirect user
+            case 200:
+                // Update the store in giving API data
+                userDispatch(update(apiData));
+
+                // Redirect the user
+                navigate('/user');
+                break;
+
+            // Display error message
+            case 400: 
+                console.log('Error login');
+                break;
+
+            default:
+                console.log('Not status 200 or 400');
+                break;
+        }
     }
 
     return (
