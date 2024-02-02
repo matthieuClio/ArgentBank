@@ -26,6 +26,7 @@ $headerSignInColor: #2c3e50;
             &__container {
                 display: inline-block;
                 margin-left: 10px;
+                cursor: pointer;
                 
                 &:hover {
                     text-decoration: underline;

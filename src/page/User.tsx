@@ -96,7 +96,7 @@ export default function User () {
     // Make a redirection for a user who are not connected
     useEffect(() => {
         if (!userInfo.connected) {
-            navigate('login');
+            navigate('/login');
         }
     })
 

@@ -14,6 +14,7 @@ export const sliceUser = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        // Stock user informations
         update: (state, action) => {
             state.token = action.payload.token.body.token;
             state.userFirstname = action.payload.userInformations.body.firstName
@@ -22,15 +23,22 @@ export const sliceUser = createSlice({
             state.connected = !state.connected
         },
 
+        // Update userFirstname and userName
         updateInfoUser: (state, action) => {
             state.userFirstname = action.payload.body.firstName;
             state.userName = action.payload.body.lastName;
+        },
+
+        // Store Reset 
+        reset: (state) => {
+            state = initialState;
+            return state;
         }
     }
 });
 
 // Actions exported for dispatch using
-export const { update, updateInfoUser } = sliceUser.actions;
+export const { update, updateInfoUser, reset } = sliceUser.actions;
 
 // Reducer exported
 export default sliceUser.reducer;

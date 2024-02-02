@@ -3,15 +3,8 @@ $connectionBackground: #12002b;
 $connectionColor: #2c3e50;
 $connectionFormBackground: #FFFFFF;
 $connectionFormSubmitButtonBackground: #00bc77;
-$connectionFormSubmitButtonColor: #fff;
-// Factored
-.connection-label {
-    font-weight: bold;
-}
-.connection-input-text {
-    width: 100%;
-    padding: 5px;
-}
+$connectionFormSubmitButtonColor: #FFFFFF;
+$connectionFormErrorColor: #FF0000;     
 
 // Connection page component
 .connection {
@@ -72,5 +65,23 @@ $connectionFormSubmitButtonColor: #fff;
                 text-decoration: underline;
             }
         }
+
+        &__error {
+            margin-top: 20px;
+            font-weight: bold;
+            color: $connectionFormErrorColor;
+        }
     }
+}
+
+// Factored
+.connection-label {
+    font-weight: bold;
+}
+.connection-input-text {
+    width: 100%;
+    padding: 5px;
+}
+.connexion-display-none {
+    display: none;
 }

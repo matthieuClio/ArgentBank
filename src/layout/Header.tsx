@@ -1,16 +1,36 @@
 // React router
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 
 // React redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import './header.scss';
 
+// Scripts
+import { reset } from '../scripts/reduxToolkit/slice';
+
 export default function Header () {
+
+    const dispatch = useDispatch();
+
+    // Store access
     const userInfo = useSelector((state: {
-        user: { userFirstname: string, connected: boolean } 
+        user: { userFirstname: string, connected: boolean }
     }) => state.user);
+
+    // For make redirection
+    const navigate = useNavigate();
+
+    // Reset store and makes a redirection
+    function handleClick () {
+        // Call reducer for reset store
+        dispatch(reset());
+
+        // console.log(userInfo)
+        // Make a redirection
+        navigate('/');
+    }
 
     return (
         <>
@@ -19,7 +39,7 @@ export default function Header () {
                     <ul className="main-navigation__ul">
                         <li>
                             <Link to="/">
-                                <img src="./images/argentBankLogo.png" alt="logo ARGENTBANK" className="main-navigation__ul__logo"/>
+                                <img src="./images/argentBankLogo.png" alt="logo ARGENTBANK" className="main-navigation__ul__logo" />
                             </Link>
                         </li>
 
@@ -34,12 +54,10 @@ export default function Header () {
                                         </div>
                                     </Link>
 
-                                    <Link to="/">
-                                        <div className="main-navigation__ul__sign-in__container">
-                                            <span className="fa fa-sign-out main-navigation__ul__sign-in__container__icon"></span>
-                                            <span>Sign Out</span>
-                                        </div>
-                                    </Link>
+                                    <div onClick={handleClick} className="main-navigation__ul__sign-in__container">
+                                        <span className="fa fa-sign-out main-navigation__ul__sign-in__container__icon"></span>
+                                        <span>Sign Out</span>
+                                    </div>
                                 </>)
                             }
 

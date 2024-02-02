@@ -1,8 +1,11 @@
+// React 
+import { useState } from 'react';
+
 // React router
 import { useNavigate } from 'react-router-dom';
 
 // React redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Style
 import './connection.scss';
@@ -13,16 +16,23 @@ import getData from '../scripts/getData';
 import { update } from '../scripts/reduxToolkit/slice';
 
 export default function Connection () {
+    // const defaultIdentifiant = 
+
+    // Error login  
+    const [errorLogin, setErrorLogin] = useState(false);
+    // User login informations
+    // const [loginUser, setLoginUser] = useState(false);
+    const [loginUser] = useState(JSON.parse(localStorage.getItem('login') as string));
 
     // For use reducer
-    const userDispatch = useDispatch()
-
-    // Get user store information
-    const userStore = useSelector((state: { user: object }) => state.user);
-    console.log(userStore);
+    const userDispatch = useDispatch();
 
     // For make redirection
     const navigate = useNavigate();
+
+    // Get user store information
+    // const userStore = useSelector((state: { user: object }) => state.user);
+    // console.log(userStore);
 
     // HandleSubmit function
     function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
@@ -33,13 +43,18 @@ export default function Connection () {
         const form = new FormData(event.target as HTMLFormElement);
         const usernameUser = form.get("username");
         const passwordUser = form.get("password");
+        const rememberMe = form.get("remember-me");
 
         // Call async function
-        fetchUserData(usernameUser, passwordUser);
+        fetchUserData(usernameUser, passwordUser, rememberMe);
     }
 
     // Make API calls - get token
-    async function fetchUserData (usernameUser: FormDataEntryValue | null, passwordUser: FormDataEntryValue | null) {
+    async function fetchUserData (
+        usernameUser: FormDataEntryValue | null, 
+        passwordUser: FormDataEntryValue | null,
+        rememberMe: FormDataEntryValue | null,
+    ) {
         // Make an API call for connect the user
         const apiData = await getData(usernameUser, passwordUser);
         console.log(apiData);
@@ -48,8 +63,17 @@ export default function Connection () {
         switch (apiData.token.status) {
             // Redirect user
             case 200:
-                // Update the store in giving API data
+                // Update the store to giving API data
                 userDispatch(update(apiData));
+
+                // Remember it's check, remember user login informations
+                if (rememberMe != null) {
+                    // Define informations to stock in localStorage
+                    localStorage.setItem('login', JSON.stringify({username: usernameUser, password: passwordUser}));
+                } else {
+                    // Remove login storage informations
+                    localStorage.removeItem('login');
+                }
 
                 // Redirect the user
                 navigate('/user');
@@ -57,11 +81,12 @@ export default function Connection () {
 
             // Display error message
             case 400: 
-                console.log('Error login');
+                // Set errorLogin to true
+                setErrorLogin(true);
                 break;
 
             default:
-                console.log('Not status 200 or 400');
+                console.log('Error not status 200 or 400');
                 break;
         }
     }
@@ -81,17 +106,17 @@ export default function Connection () {
                 <label htmlFor="username" className="connection-label">
                     Username
                 </label>
-                <input type="text" name="username" id="username" placeholder="tony@stark.com" defaultValue="tony@stark.com" required className="connection-input-text connection__form__input-username" />
+                <input type="text" name="username" id="username" placeholder="tony@stark.com" defaultValue={loginUser && loginUser.username} required className="connection-input-text connection__form__input-username" />
 
                 {/* Password */}
                 <label htmlFor="password" className="connection-label">
                     Password
                 </label>
-                <input type="password" name="password" id="password" placeholder="password123" defaultValue="password123" required className="connection-input-text" />
+                <input type="password" name="password" id="password" placeholder="password123" defaultValue={loginUser && loginUser.password} required className="connection-input-text" />
 
                 {/* Checkbox */}
                 <div className="connection__form__input-container">
-                    <input type="checkbox" id="remember-me" className="connection__form__input-container__input-checkbox" />
+                    <input type="checkbox" name="remember-me" id="remember-me" className="connection__form__input-container__input-checkbox" />
                     <label htmlFor="remember-me">
                         Remember me
                     </label>
@@ -103,6 +128,10 @@ export default function Connection () {
                         Sign In
                     </span>
                 </button>
+
+                <div className={errorLogin ? 'connection__form__error' : 'connexion-display-none'}>
+                    Erreur : vérifier l'identifiant et le mot de passe. 
+                </div>
             </form>
         </main>
     )
