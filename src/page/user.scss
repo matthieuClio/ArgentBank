@@ -5,7 +5,7 @@ $userButtonBorder: #00bc77;
 $userButtonBackground: #00bc77;
 $userButtonColor: #fff;
 
-// User componant page
+/* User componant page */
 .user {
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@ $userButtonColor: #fff;
     }
 
     &__button-edit {
-        margin: 20px 0 20px 0
+        margin: 20px 0 20px 0;
     }
 
     &__form {
@@ -39,7 +39,7 @@ $userButtonColor: #fff;
         flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 20px;
-        width: 400px;
+        max-width: 400px;
 
         &__firstname {
             padding: 5px;
@@ -74,4 +74,24 @@ $userButtonColor: #fff;
 
 .user-display-none {
     display: none;
+}
+
+/* Mobile display */
+@media screen and (max-width: 767px) {
+
+    /* User componant page */
+    .user {
+
+        &__form {
+
+            &__firstname {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            &__name {
+                width: 100%;
+            }
+        }
+    }
 }
