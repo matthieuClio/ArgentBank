@@ -6,7 +6,7 @@ $connectionFormSubmitButtonBackground: #00bc77;
 $connectionFormSubmitButtonColor: #FFFFFF;
 $connectionFormErrorColor: #FF0000;     
 
-// Connection page component
+/* Connection page component */
 .connection {
     padding: 40px 0 40px 0;
     background-color: $connectionBackground;
@@ -16,7 +16,7 @@ $connectionFormErrorColor: #FF0000;
         border: 2px solid orange;
         margin: auto;
         padding: 40px;
-        width: 250px;
+        max-width: 250px;
         height: 350px;
         background-color: $connectionFormBackground;
 
@@ -74,7 +74,7 @@ $connectionFormErrorColor: #FF0000;
     }
 }
 
-// Factored
+/* Factored */
 .connection-label {
     font-weight: bold;
 }
