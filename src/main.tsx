@@ -16,6 +16,7 @@ import Footer from './layout/Footer';
 import Home from './page/Home';
 import Connection from './page/Connection';
 import User from './page/User';
+import Error from './page/Error';
 
 // Style - Fonts
 import 'normalize.css';
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
         element: <User />
       }
     ],
-    errorElement: <>Error</>
+    errorElement: <>
+      <Header />
+      <Error />
+      <Footer />
+    </>
   }
 ])
 

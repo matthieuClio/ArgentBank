@@ -1,0 +1,34 @@
+// Variables
+$errorPageBackground: #12002b;
+$errorPageStatusColor: #FFFFFF;
+$errorPageTextColor: #FFFFFF;
+$errorPageStatusTextColor: #FFFFFF;
+
+// Error page
+.error-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: $errorPageBackground;
+
+    &__status {
+        display: block;
+        margin: 0;
+        font-size: 100px;
+        color: $errorPageStatusColor;
+    }
+
+    &__text {
+        color: $errorPageTextColor;
+        margin-top: 20px;
+        font-size: 25px;
+    }
+
+    &__status-text {
+        margin-top: 20px;
+        color: $errorPageStatusTextColor;
+    }
+}
