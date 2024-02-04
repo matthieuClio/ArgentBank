@@ -39,7 +39,7 @@ export default function Connection () {
         // Cancel the submition
         event.preventDefault();
     
-        // Get form data
+        // Get data form
         const form = new FormData(event.target as HTMLFormElement);
         const usernameUser = form.get("username");
         const passwordUser = form.get("password");
