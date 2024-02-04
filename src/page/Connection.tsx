@@ -16,15 +16,14 @@ import getData from '../scripts/getData';
 import { update } from '../scripts/reduxToolkit/slice';
 
 export default function Connection () {
-    // const defaultIdentifiant = 
-
     // Error login  
     const [errorLogin, setErrorLogin] = useState(false);
+    // Error message 
+    const [errorMessage, setErrorMessage] = useState('');
     // User login informations
-    // const [loginUser, setLoginUser] = useState(false);
     const [loginUser] = useState(JSON.parse(localStorage.getItem('login') as string));
 
-    // For use reducer
+    // For make a dispatch
     const userDispatch = useDispatch();
 
     // For make redirection
@@ -61,7 +60,7 @@ export default function Connection () {
 
         // Check the response status
         switch (apiData.token.status) {
-            // Redirect user
+            // User is connected
             case 200:
                 // Update the store to giving API data
                 userDispatch(update(apiData));
@@ -79,14 +78,20 @@ export default function Connection () {
                 navigate('/user');
                 break;
 
-            // Display error message
+            // Specific error message for status 400
             case 400: 
-                // Set errorLogin to true
+                // Define error message
+                setErrorMessage("Erreur : vérifier l'identifiant et le mot de passe.");
+                // Display error message
                 setErrorLogin(true);
                 break;
 
+            // Specific error message for other status
             default:
-                console.log('Error not status 200 or 400');
+                // Define error message
+                setErrorMessage("Erreur : problème de server.");
+                // Display error message
+                setErrorLogin(true);
                 break;
         }
     }
@@ -130,7 +135,7 @@ export default function Connection () {
                 </button>
 
                 <div className={errorLogin ? 'connection__form__error' : 'connexion-display-none'}>
-                    Erreur : vérifier l'identifiant et le mot de passe. 
+                    {errorMessage} 
                 </div>
             </form>
         </main>
