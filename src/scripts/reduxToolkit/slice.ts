@@ -17,6 +17,7 @@ export const sliceUser = createSlice({
         // Stock user informations
         update: (state, action) => {
             state.token = action.payload.token.body.token;
+            state.id = action.payload.userInformations.body.id
             state.userFirstname = action.payload.userInformations.body.firstName
             state.userName = action.payload.userInformations.body.lastName
             state.email = action.payload.userInformations.body.email

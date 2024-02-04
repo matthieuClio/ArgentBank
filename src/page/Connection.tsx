@@ -65,7 +65,7 @@ export default function Connection () {
                 // Update the store to giving API data
                 userDispatch(update(apiData));
 
-                // Remember it's check, remember user login informations
+                // If Remember checked, remember user login informations
                 if (rememberMe != null) {
                     // Define informations to stock in localStorage
                     localStorage.setItem('login', JSON.stringify({username: usernameUser, password: passwordUser}));
