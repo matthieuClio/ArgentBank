@@ -61,7 +61,7 @@ export default function Home () {
             </figure>
 
             <div className="features-container">
-                {/* Features componant */}
+                {/* Features component */}
                 <Features 
                     imgUrl={allFeatures.contact.image}
                     imgAlt={allFeatures.contact.imageAlt}

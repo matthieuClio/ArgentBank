@@ -2,7 +2,7 @@
 $heroDescriptionColor: #2c3e50;
 $heroDescriptionBackground: #FFFFFF;
 
-// Home page
+/* Home page */
 .hero {
     border: 2px solid orange;
     position: relative;
@@ -42,8 +42,47 @@ $heroDescriptionBackground: #FFFFFF;
     }
 }
 
+/* Container of Features component */
 .features-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+/* Tablet display */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    /* Home page */
+    .hero {
+
+        &__image {
+            object-position: 0 -100px;
+        }
+    }
+    
+    /* Container of Features component */
+    .features-container {
+        flex-direction: column;
+    }
+}
+
+/* Mobile display */
+@media screen and (max-width: 767px) {
+        /* Home page */
+        .hero {
+
+            &__image {
+                object-position: 0 0;
+            }
+
+            &__description {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding: 2rem;
+                width: 200px;
+                width: 70%;
+            }
+        }
 }
