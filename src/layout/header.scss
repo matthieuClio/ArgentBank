@@ -40,3 +40,24 @@ $headerSignInColor: #2c3e50;
         }
     }
 }
+
+/* Mobile display */
+@media screen and (max-width: 767px) {
+    .main-navigation {
+        &__ul {
+            &__sign-in {
+                &__container {
+                    // font-size: 12px;
+
+                    &__icon {
+                        // font-size: 12px;
+                    }
+
+                    &__text {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -50,13 +50,17 @@ export default function Header () {
                                     <Link to="user">
                                         <div className="main-navigation__ul__sign-in__container">
                                             <span className="fa fa-user-circle main-navigation__ul__sign-in__container__icon"></span>
-                                            <span>{userInfo.userFirstname}</span>
+                                            <span className="main-navigation__ul__sign-in__container__text">
+                                                {userInfo.userFirstname}
+                                            </span>
                                         </div>
                                     </Link>
 
                                     <div onClick={handleClick} className="main-navigation__ul__sign-in__container">
                                         <span className="fa fa-sign-out main-navigation__ul__sign-in__container__icon"></span>
-                                        <span>Sign Out</span>
+                                        <span className="main-navigation__ul__sign-in__container__text">
+                                            Sign Out
+                                        </span>
                                     </div>
                                 </>)
                             }
