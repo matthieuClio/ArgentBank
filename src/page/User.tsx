@@ -115,8 +115,8 @@ export default function User () {
             
             {/* Form */}
             <form onSubmit={handleSubmit} className={edit ? 'user__form' : 'user-display-none'}>
-                <input type="text" name="firstname" placeholder={userInfo.userFirstname} className="user__form__firstname" />
-                <input type="text" name="name" placeholder={userInfo.userName} className="user__form__name" />
+                <input type="text" name="firstname" placeholder={userInfo.userFirstname} required className="user__form__firstname" />
+                <input type="text" name="name" placeholder={userInfo.userName} required className="user__form__name" />
 
                 <button type="submit" className="user__form__button-update user-button-primary">
                     Save

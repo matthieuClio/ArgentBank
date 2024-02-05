@@ -23,10 +23,10 @@ export default function Connection () {
     // User login informations
     const [loginUser] = useState(JSON.parse(localStorage.getItem('login') as string));
 
-    // For make a dispatch
+    // For make a dispatch (React redux)
     const userDispatch = useDispatch();
 
-    // For make redirection
+    // For make redirection (React router)
     const navigate = useNavigate();
 
     // Get user store information
@@ -68,7 +68,7 @@ export default function Connection () {
                 // If Remember checked, remember user login informations
                 if (rememberMe != null) {
                     // Define informations to stock in localStorage
-                    localStorage.setItem('login', JSON.stringify({username: usernameUser, password: passwordUser}));
+                    localStorage.setItem('login', JSON.stringify({username: usernameUser, password: passwordUser, check: true}));
                 } else {
                     // Remove login storage informations
                     localStorage.removeItem('login');
@@ -121,7 +121,7 @@ export default function Connection () {
 
                 {/* Checkbox */}
                 <div className="connection__form__input-container">
-                    <input type="checkbox" name="remember-me" id="remember-me" className="connection__form__input-container__input-checkbox" />
+                    <input type="checkbox" name="remember-me" id="remember-me" defaultChecked={loginUser && loginUser.check} className="connection__form__input-container__input-checkbox" />
                     <label htmlFor="remember-me">
                         Remember me
                     </label>

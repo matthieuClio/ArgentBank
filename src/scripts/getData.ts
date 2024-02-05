@@ -34,7 +34,7 @@ export default async function getData (usernameUser: FormDataEntryValue | null, 
         console.log(error);
     }
 
-    // Token data API returned
+    // Token data API returned or error 500
     const apiIdentification = responseToken ? await responseToken.json() : { status: 500};
 
     // Will have user informations
