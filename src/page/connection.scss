@@ -13,7 +13,6 @@ $connectionFormErrorColor: #FF0000;
     color: $connectionColor;
 
     &__form {
-        border: 2px solid orange;
         margin: auto;
         padding: 40px;
         max-width: 250px;
@@ -21,14 +20,12 @@ $connectionFormErrorColor: #FF0000;
         background-color: $connectionFormBackground;
 
         &__icon {
-            border: 2px solid blue;
             width: 100%;
             font-size: 19px;
             text-align: center;
         }
 
         &__title {
-            border: 2px solid red;
             text-align: center;
             font-size: 25px;
         }
@@ -42,7 +39,6 @@ $connectionFormErrorColor: #FF0000;
             display: flex;
             margin-top: 20px;
             width: 100%;
-            border: 2px solid red;
 
             &__input-checkbox {
                 margin-right: 5px;
